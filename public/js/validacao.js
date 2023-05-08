@@ -3,12 +3,8 @@ function validateName() {
     const cpfInput = document.getElementById("cpf");
     const name = nameInput.value.trim();
     let cpf = cpfInput.value.trim();
-  
-    // Adição da máscara para o CPF
+
     cpf = cpf.replace(/\D/g, ""); // remove caracteres não numéricos
-    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); // coloca ponto após o terceiro dígito
-    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); // coloca ponto após o sexto dígito
-    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // coloca hífen antes dos dois últimos dígitos
   
     // Validação do nome
     const nameRegex = /^[a-zA-ZÀ-ÿ]+\s([a-zA-ZÀ-ÿ]+\s?)+[a-zA-ZÀ-ÿ]*$/;
@@ -77,6 +73,4 @@ function validateName() {
   
     return true;
   }
-  
-  
   
