@@ -2,29 +2,30 @@
 
 namespace App\Http\Middleware;
 
-use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
+class CheckPessoaFisica
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @param  string|null  ...$guards
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, ...$guards)
+    public function handle($request, Closure $next)
     {
-        $guards = empty($guards) ? [null] : $guards;
+     
+        $cpf = $request->cpf;
+        $name = $request->fname;
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
+        if (strlen($cpf) != 11) {
+            return response()->json(['message' => 'CPF inválido'], 400);
+        }
+
+        if (empty($name)) {
+            return response()->json(['message' => 'Nome não pode ser vazio'], 400);
         }
 
         return $next($request);

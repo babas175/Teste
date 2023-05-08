@@ -43,8 +43,6 @@
   <body>
 	
     <h3>Concurso Publico para desenvolvedor </h3>
-    <hr>
-    <h3>Inscriçao Candidato </h3>
     <div>
 		<form action="/action_page.php" onsubmit="return validateName()">
         <label for="fname">Nome completo:</label>
@@ -54,34 +52,22 @@
         <input type="text" id="address" name="address" placeholder="Digite seu endereço...">
 
         <label for="state">Estado:</label>
-        <select id="state" name="state" required></select>
+        <select id="state" name="state"></select>
 
         <label for="city">Cidade:</label>
-        <select id="city" name="city" required></select>
+        <select id="city" name="city"></select>
 
         <label for="cpf">CPF:</label>
-        <input oninput="mascara(this)" type="text" id="cpf" name="cpf" placeholder="Digite seu CPF...">
+        <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF...">
 
         <label for="job">Cargo:</label>
-        <input type="text" id="job" name="job"required  placeholder="Digite seu cargo... ">
+        <input type="text" id="job" name="job" placeholder="Digite seu cargo...">
 		
         <input type="submit" value="Salvar Inscrição">
       </form>
     </div>
 
-	<script src="../js/validacao.js"></script>
-    <script> 
-        function mascara(i){
-        var v = i.value;
-        if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
-            i.value = v.substring(0, v.length-1);
-            return;
-        }
-        i.setAttribute("maxlength", "14");
-        if (v.length == 3 || v.length == 7) i.value += ".";
-            (v.length == 11) i.value += "-";
-        }
-    </script>
+	<script src="validacao.js"></script>
 </body>
 
 </html>
