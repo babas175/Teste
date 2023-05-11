@@ -6,24 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePessoaFisicasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('pessoa_fisicas', function (Blueprint $table) {
+        Schema::create('pessoa_fisica', function (Blueprint $table) {
             $table->id();
+            $table->string('firstname');
+            $table->string('cpf');
+            $table->string('address');
+            $table->string('city');
+            $table->string('state');
+            $table->string('job');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('pessoa_fisicas');

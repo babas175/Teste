@@ -24,8 +24,9 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
-		margin: 0 auto;
-      }
+        margin: 0 auto; /* Add this line to center the button */
+        display: block; /* Add this line to make the button a block element */
+}
 
       input[type=submit]:hover {
         background-color: #45a049;
@@ -46,7 +47,9 @@
     <hr>
     <h3>Inscriçao Candidato </h3>
     <div>
-		<form action="/action_page.php" onsubmit="return validateName()">
+		<form  action="{{ route('api.pessoa_fisica') }}" method="POST" onsubmit="return validateName()">
+    @csrf
+      
         <label for="fname">Nome completo:</label>
         <input type="text" id="fname" name="firstname" placeholder="Digite seu nome completo...">
 
@@ -54,10 +57,13 @@
         <input type="text" id="address" name="address" placeholder="Digite seu endereço..." required>
 
         <label for="state">Estado:</label>
-        <select id="state" name="state" required></select>
-
+        <select id="state" name="state" value="" required>
+          <option></option>
+        </select>
         <label for="city">Cidade:</label>
-        <select id="city" name="city" required></select>
+        <select id="city" name="city" >
+          <option></option>
+        </select>
 
         <label for="cpf">CPF:</label>
         <input oninput="mascara(this)" type="text" id="cpf" name="cpf" placeholder="Digite seu CPF...">
@@ -65,11 +71,14 @@
         <label for="job">Cargo:</label>
         <input type="text" id="job" name="job" required  placeholder="Digite seu cargo... ">
 		
-        <input type="submit" value="Salvar Inscrição">
+        <input id="form" type="submit" value="Salvar Inscrição">
       </form>
+      
+
     </div>
 
 	<script src="../js/validacao.js"></script>
+  <script src="../js/select.js"></script>
     <script> 
         function mascara(i){
         var v = i.value;
@@ -85,6 +94,9 @@
         }
     }
     </script>
+
+
+  
 </body>
 
 </html>

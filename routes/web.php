@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/cadastrar_cidade', function () {
+    return view('cadastrar_cidade');
+});
+Route::get('/cadastrar_estado', function () {
+    return view('cadastrar_estado');
+});
+Route::get('/comprovante', function () {
+    return view('comprovante');
+});
+
